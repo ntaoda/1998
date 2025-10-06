@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- タイトル＆メタ情報 -->
+  <title>TAODA NAOKI | 舞台監督・演出部 – Official</title>
+  <meta name="description" content="舞台監督・演出部・劇作家 TAODA NAOKI（太尾田尚希）の公式サイト">
+
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "TAODA NAOKI",
+    "jobTitle": "舞台監督・演出部・劇作家",
+    "image": "https://t-o-d.com/img/top.png",
+    "url": "https://t-o-d.com/",
+    "sameAs": [
+      "https://x.com/FUJII_UU",
+      "https://www.instagram.com/fujii_uu/"
+    ]
+  }
+  </script>
+
+  <!-- OGP / Twitterカード -->
+  <meta property="og:title" content="TAODA NAOKI | 太尾田尚希">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://t-o-d.com/">
+  <meta property="og:image" content="https://t-o-d.com/img/top.png">
+  <meta property="og:description" content="TAODA NAOKIの公式サイト">
+  <meta property="og:site_name" content="TAODA NAOKI | 太尾田尚希">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TAODA NAOKI | 太尾田尚希">
+  <meta name="twitter:description" content="舞台監督・演出部・劇作家 TAODA NAOKI（太尾田尚希）の公式サイト">
+  <meta name="twitter:image" content="https://t-o-d.com/img/top.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@200..900&family=Nova+Round&display=swap" rel="stylesheet">
+
+  <!-- favicon & manifest -->
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="img/favicon/manifest.webmanifest">
+
+  <!-- iOS ホーム画面対応 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="TAODA NAOKI">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+
+
+
+
+<body class="home">
+
+  <div class="split-layout">
+    <!-- 左側：名前＋リンク -->
+    <div class="right-text">
+      <h1 class="site-name">TAODA NAOKI</h1>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="work.html">work</a></li>
+          <li><a href="about.html">about</a></li>
+                  <li>
+<li><a href="mailto:ntaoda@gmail.com">contact</a></li>
+
+
+        </ul>
+      </nav>
+    </div>
+
+
+    <div class="hamburger" id="hamburger">
+  ☰
+
+<nav class="main-nav" id="mobile-nav">
+  <ul>
+    <li><a href="index.html">top</a></li>
+    <li><a href="work.html">work</a></li> <!-- ← 直接 work.html に飛ばす -->
+    <li><a href="about.html">about</a></li>
+    <li><a href="mailto:ntaoda@gmail.com">contact</a></li>
+    <li class="social-center">
+      <a href="https://x.com/__t_o_d__?s=11" target="_blank">
+        <img src="img/X-icon.svg" alt="X" class="social-icon">
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+
+</div>
+    <!-- 右側：写真 -->
+    <div class="left-photo">
+      <img src="img/top.jpg" alt="TOD メイン写真">
+    </div>
+        <div class="left-photo-mvai">
+      <img src="img/top-2.jpg" alt="TOD メイン写真２">
+    </div>
+    
+  </div>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. スクロールトップボタン
+  const scrollBtn = document.getElementById('scrollToTop');
+  if(scrollBtn){
+    window.addEventListener('scroll', () => {
+      scrollBtn.style.display = (window.scrollY > 200) ? 'block' : 'none';
+    });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // 2. ハンバーガーメニュー
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  if(hamburger && mobileNav){
+    mobileNav.style.display = 'none';
+    hamburger.addEventListener('click', () => {
+      mobileNav.style.display = (mobileNav.style.display === 'none' || mobileNav.style.display === '') ? 'flex' : 'none';
+    });
+  }
+
+  // 3. WORKページ PC版
+  const pcWorkLink = document.getElementById('work-link');
+  const workTypes = document.getElementById('work-types');
+  if(pcWorkLink && workTypes){
+    pcWorkLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      workTypes.style.display = (workTypes.style.display === 'block') ? 'none' : 'block';
+    });
+    document.querySelectorAll('#work-types li').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.getAttribute('data-type');
+        document.querySelectorAll('.work-item, .work-category').forEach(el => {
+          el.style.display = (el.getAttribute('data-type') === type || type === 'all') ? 'block' : 'none';
+        });
+      });
+    });
+  }
+
+  // 4. WORKページ モバイル版
+  const mobileWorkLink = document.getElementById('mobile-work-link');
+  const mobileWorkTypes = document.getElementById('mobile-work-types');
+  if(mobileWorkLink && mobileWorkTypes){
+    mobileWorkLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      mobileWorkTypes.style.display = (mobileWorkTypes.style.display === 'block') ? 'none' : 'block';
+    });
+  }
+
+  // 5. ナビのアクティブリンク
+  const currentPage = location.pathname.split("/").pop();
+  document.querySelectorAll('.main-nav a').forEach(link => {
+    if(link.getAttribute('href') === currentPage){
+      link.classList.add('active');
+    }
+  });
+
+});
+</script>
+
+
+</body>
+
+
+</html>
