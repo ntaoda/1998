@@ -137,7 +137,10 @@
 </div>
     <!-- 右側：写真 -->
 <div class="left-photo-about">
-  <img src="img/about.jpg" alt="TOD メイン写真">
+  <div class="fog-container">
+    <img src="img/about.jpg" alt="TOD メイン写真" class="about-img">
+    <canvas id="fog-canvas"></canvas>
+  </div>
   
   <h1 class="profile-name">太尾田尚希　TAODA NAOKI</h1>
   <p class="profile-text">
@@ -220,6 +223,57 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.add('active'); // 現在のページなら active クラス追加
     }
   });
+});
+
+// ===== 曇りガラス拭き取り =====
+document.addEventListener("DOMContentLoaded", function () {
+
+  const canvas = document.getElementById("fog-canvas");
+  const img = document.querySelector(".about-img");
+  if(!canvas || !img) return;
+
+  const ctx = canvas.getContext("2d");
+
+  function setupFog(){
+    canvas.width = img.clientWidth;
+    canvas.height = img.clientHeight;
+
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "rgba(255,255,255,0.6)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+  }
+
+  setupFog();
+  window.addEventListener("resize", setupFog);
+
+  let drawing = false;
+
+  function erase(x,y){
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.beginPath();
+    ctx.arc(x,y,40,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  // スマホ
+  canvas.addEventListener("touchstart", ()=> drawing=true);
+  canvas.addEventListener("touchend", ()=> drawing=false);
+  canvas.addEventListener("touchmove", (e)=>{
+    if(!drawing) return;
+    const rect = canvas.getBoundingClientRect();
+    const t = e.touches[0];
+    erase(t.clientX-rect.left, t.clientY-rect.top);
+  });
+
+  // PC
+  canvas.addEventListener("mousedown", ()=> drawing=true);
+  canvas.addEventListener("mouseup", ()=> drawing=false);
+  canvas.addEventListener("mousemove", (e)=>{
+    if(!drawing) return;
+    const rect = canvas.getBoundingClientRect();
+    erase(e.clientX-rect.left, e.clientY-rect.top);
+  });
+
 });
 </script>
 

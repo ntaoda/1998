@@ -89,13 +89,18 @@ html, body {
 /* 名前 */
 .site-name {
   font-size: 17px;
-    font-family: 'Poppins', sans-serif; /* フォント指定 */
+  font-family: 'HigureGothic', 'Poppins', sans-serif;
   font-weight: bold;
   color: #000;
   margin: 0 0 20px 0; /* 上下のマージンだけ残す */
   text-align: center; /* 万が一の中央揃え */
   width: 100%;        /* 幅を親いっぱいにして中央揃えを確実に */
 }
+@font-face {
+  font-family: 'HigureGothic';
+  src: url('HigureGothic.ttf') format('truetype');
+}
+
 
 
 /* ナビゲーション */
@@ -166,6 +171,8 @@ html, body {
 .work-category {
   margin-top: 30px; /* 見出しが重ならないように */
   font-size: 1.5rem;
+    font-family: 'FGPHikarinokanaAREJIS1', 'Poppins', sans-serif;
+
 }
 
 /* 作品リスト（カードを中央揃え） */
@@ -284,6 +291,7 @@ html, body {
 .left-photo-about .profile-name,
  .profile-text {
   text-align: center;   /* 文字も中央揃え */
+  
 }
 
 
@@ -310,6 +318,7 @@ html, body {
     font-family: 'M PLUS 1p', sans-serif;
     margin-top: 10px;
     padding: 0;
+    
 }
 
 
@@ -850,4 +859,22 @@ body.about-page .site-name {
 
 
 
+}
+
+
+.fog-container{
+  position: relative;
+  display: inline-block;
+}
+
+.about-img{
+  width: 100%;
+  display: block;
+}
+
+#fog-canvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+  touch-action: none;
 }
