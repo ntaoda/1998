@@ -148,106 +148,125 @@
     中学では卓球部、高校では弓道部、大学では演劇部に所属。
   </p>
 </div>
-
 <script>
-// スクロール検知
-window.addEventListener('scroll', function() {
-  const btn = document.getElementById('scrollToTop');
-  if(btn) btn.style.display = (window.scrollY > 200) ? 'block' : 'none';
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-// トップへスクロール
-const scrollBtn = document.getElementById('scrollToTop');
-if(scrollBtn){
-  scrollBtn.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // --- スクロール検知 ---
+  const scrollBtn = document.getElementById('scrollToTop');
+  window.addEventListener('scroll', () => {
+    if(scrollBtn) scrollBtn.style.display = (window.scrollY > 200) ? 'block' : 'none';
   });
-}
+  if(scrollBtn){
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
-// ハンバーガーメニュー
-document.addEventListener('DOMContentLoaded', () => {
+  // --- ハンバーガー ---
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobile-nav');
-
-  if (hamburger && mobileNav) {
+  if(hamburger && mobileNav){
     mobileNav.style.display = 'none';
     hamburger.addEventListener('click', () => {
-      mobileNav.style.display = (mobileNav.style.display === 'none' || mobileNav.style.display === '') ? 'flex' : 'none';
+      mobileNav.style.display = (mobileNav.style.display==='none'||mobileNav.style.display==='') ? 'flex' : 'none';
     });
   }
 
-  // WORKページ用の要素があれば処理
-  const pcWorkLink = document.getElementById('work-link');
-  const workTypes = document.getElementById('work-types');
-  if(pcWorkLink && workTypes){
-    pcWorkLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      workTypes.style.display = (workTypes.style.display === 'block') ? 'none' : 'block';
-    });
-
-    document.querySelectorAll('#work-types li').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const type = btn.getAttribute('data-type');
-        document.querySelectorAll('.work-item, .work-category').forEach(el => {
-          if(el.getAttribute('data-type') === type || type === 'all'){
-            el.style.display = 'block';
-          } else {
-            el.style.display = 'none';
-          }
-        });
-      });
-    });
-  }
-
-  // モバイル版 WORKがあれば
-  const mobileWorkLink = document.getElementById('mobile-work-link');
-  const mobileWorkTypes = document.getElementById('mobile-work-types');
-  if(mobileWorkLink && mobileWorkTypes){
-    mobileWorkLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      mobileWorkTypes.style.display = (mobileWorkTypes.style.display === 'block') ? 'none' : 'block';
-    });
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  // 現在のページのファイル名を取得
+  // --- 現在ページのリンクハイライト ---
   const currentPage = location.pathname.split("/").pop();
-
-  // ナビ内のリンクを取得
-  const navLinks = document.querySelectorAll('.main-nav a');
-
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if(href === currentPage){
-      link.classList.add('active'); // 現在のページなら active クラス追加
+  document.querySelectorAll('.main-nav a').forEach(link => {
+    if(link.getAttribute('href') === currentPage){
+      link.classList.add('active');
     }
   });
+
+  // --- 曇りガラス ---
+  const canvas = document.getElementById("fog-canvas");
+  const img = document.querySelector(".about-img");
+  if(canvas && img){
+    const ctx = canvas.getContext("2d");
+    let drawing = false;
+
+    function setupFog(){
+      const rect = img.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+
+      canvas.width = rect.width * ratio;
+      canvas.height = rect.height * ratio;
+      canvas.style.width = rect.width + "px";
+      canvas.style.height = rect.height + "px";
+
+      ctx.setTransform(1,0,0,1,0,0);
+      ctx.scale(ratio, ratio);
+
+      ctx.globalCompositeOperation = "source-over";
+      ctx.fillStyle = "rgba(255,255,255,0.7)";
+      ctx.fillRect(0,0,rect.width,rect.height);
+    }
+
+    setupFog();
+    window.addEventListener("resize", setupFog);
+
+    function erase(x,y){
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(x,y,40,0,Math.PI*2);
+      ctx.fill();
+    }
+
+    function getPos(e){
+      const rect = canvas.getBoundingClientRect();
+      if(e.touches) return { x: e.touches[0].clientX-rect.left, y: e.touches[0].clientY-rect.top };
+      return { x: e.clientX-rect.left, y: e.clientY-rect.top };
+    }
+
+    // --- PC ---
+    canvas.addEventListener("mousedown", e => { drawing=true; erase(getPos(e).x,getPos(e).y); });
+    canvas.addEventListener("mousemove", e => { if(drawing) erase(getPos(e).x,getPos(e).y); });
+    canvas.addEventListener("mouseup", ()=>drawing=false);
+    canvas.addEventListener("mouseleave", ()=>drawing=false);
+
+    // --- スマホ ---
+    canvas.addEventListener("touchstart", e => { e.preventDefault(); drawing=true; erase(getPos(e).x,getPos(e).y); }, {passive:false});
+    canvas.addEventListener("touchmove", e => { e.preventDefault(); if(drawing) erase(getPos(e).x,getPos(e).y); }, {passive:false});
+    canvas.addEventListener("touchend", ()=>drawing=false);
+    canvas.addEventListener("touchcancel", ()=>drawing=false);
+  }
+
 });
 
-// ===== 曇りガラス拭き取り =====
-document.addEventListener("DOMContentLoaded", function () {
+
+document.addEventListener("DOMContentLoaded", () => {
 
   const canvas = document.getElementById("fog-canvas");
   const img = document.querySelector(".about-img");
   if(!canvas || !img) return;
 
   const ctx = canvas.getContext("2d");
+  let drawing = false;
 
+  // 高 DPI 対応 & サイズ設定
   function setupFog(){
-    canvas.width = img.clientWidth;
-    canvas.height = img.clientHeight;
+    const rect = img.getBoundingClientRect();
+    const ratio = window.devicePixelRatio || 1;
+
+    canvas.width = rect.width * ratio;
+    canvas.height = rect.height * ratio;
+    canvas.style.width = rect.width + "px";
+    canvas.style.height = rect.height + "px";
+
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.scale(ratio, ratio);
 
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = "rgba(255,255,255,0.7)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillRect(0,0,rect.width,rect.height);
   }
 
   setupFog();
   window.addEventListener("resize", setupFog);
 
-  let drawing = false;
-
+  // 消す処理
   function erase(x,y){
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
@@ -255,38 +274,37 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.fill();
   }
 
-// スマホ
-canvas.addEventListener("touchstart", (e)=>{
-  e.preventDefault();
-  drawing = true;
-}, { passive:false });
-
-canvas.addEventListener("touchend", ()=>{
-  drawing = false;
-});
-
-canvas.addEventListener("touchmove", (e)=>{
-  e.preventDefault();
-  if(!drawing) return;
-
-  const rect = canvas.getBoundingClientRect();
-  const t = e.touches[0];
-  erase(t.clientX - rect.left, t.clientY - rect.top);
-
-}, { passive:false });
-
-  // PC
-  canvas.addEventListener("mousedown", ()=> drawing=true);
-  canvas.addEventListener("mouseup", ()=> drawing=false);
-  canvas.addEventListener("mousemove", (e)=>{
-    if(!drawing) return;
+  // 座標取得（PC/タッチ共通）
+  function getPos(e){
     const rect = canvas.getBoundingClientRect();
-    erase(e.clientX-rect.left, e.clientY-rect.top);
-  });
+    if(e.touches) return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+
+  // --- PC ---
+  canvas.addEventListener("mousedown", e => { drawing=true; erase(getPos(e).x,getPos(e).y); });
+  canvas.addEventListener("mousemove", e => { if(drawing) erase(getPos(e).x,getPos(e).y); });
+  canvas.addEventListener("mouseup", ()=>drawing=false);
+  canvas.addEventListener("mouseleave", ()=>drawing=false);
+
+  // --- スマホ ---
+  canvas.addEventListener("touchstart", e => { 
+    e.preventDefault(); 
+    drawing=true; 
+    erase(getPos(e).x,getPos(e).y); // ←ここが重要
+  }, {passive:false});
+
+  canvas.addEventListener("touchmove", e => { 
+    e.preventDefault(); 
+    if(drawing) erase(getPos(e).x,getPos(e).y); 
+  }, {passive:false});
+
+  canvas.addEventListener("touchend", ()=>drawing=false);
+  canvas.addEventListener("touchcancel", ()=>drawing=false);
 
 });
 </script>
-
+</script>
 
 </body>
 
