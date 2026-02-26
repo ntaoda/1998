@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
     canvas.height = img.clientHeight;
 
     ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = "rgba(255,255,255,0.6)";
+    ctx.fillStyle = "rgba(255,255,255,0.7)";
     ctx.fillRect(0,0,canvas.width,canvas.height);
   }
 
@@ -255,15 +255,25 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.fill();
   }
 
-  // スマホ
-  canvas.addEventListener("touchstart", ()=> drawing=true);
-  canvas.addEventListener("touchend", ()=> drawing=false);
-  canvas.addEventListener("touchmove", (e)=>{
-    if(!drawing) return;
-    const rect = canvas.getBoundingClientRect();
-    const t = e.touches[0];
-    erase(t.clientX-rect.left, t.clientY-rect.top);
-  });
+// スマホ
+canvas.addEventListener("touchstart", (e)=>{
+  e.preventDefault();
+  drawing = true;
+}, { passive:false });
+
+canvas.addEventListener("touchend", ()=>{
+  drawing = false;
+});
+
+canvas.addEventListener("touchmove", (e)=>{
+  e.preventDefault();
+  if(!drawing) return;
+
+  const rect = canvas.getBoundingClientRect();
+  const t = e.touches[0];
+  erase(t.clientX - rect.left, t.clientY - rect.top);
+
+}, { passive:false });
 
   // PC
   canvas.addEventListener("mousedown", ()=> drawing=true);
