@@ -4,6 +4,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+JP&display=swap');
 
+@font-face {
+  font-family: 'FGPHikarinokanaAREJIS1';
+  src: url('../fonts/FGPHikarinokanaAREJIS1.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 .sans {
   font-family: "Roboto", "Noto Sans JP", sans-serif;
