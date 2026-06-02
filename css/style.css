@@ -30,15 +30,46 @@ html, body {
 
 
 
-/* 横並びレイアウト */
-.split-layout {
-  display: flex;
-  height: 100vh;
+.home-title {
+  position: fixed;
+  top: 50%!important;
+  left: 50%!important;
+  transform: translate(-50%, -50%);
   margin: 0;
-  padding: 0;
+  text-align: center;
+  width: auto;
 }
 
+.home-title .site-name-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: opacity 0.3s;
+}
 
+.home-title .site-name-link:hover {
+  opacity: 0.6;
+}
+.split-layout {
+  margin: 0 auto;
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-top: 30px;
+}
+
+.work-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* 左側の写真は可変 */
 .left-photo {
   flex: 1;
@@ -69,18 +100,6 @@ html, body {
   padding-left: 0;
 }
 
-/* 右側のテキスト */
-.right-text {
-  width: 180px;            /* 右端の固定幅 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;  /* 縦方向中央 */
-  align-items: flex-start;  /* 子要素を左揃えに変更 */
-  height: 100%;
-  box-sizing: border-box;
-  padding: 0 10px;         /* 少し余白を追加 */
-}
-
 
 
 
@@ -88,13 +107,12 @@ html, body {
 
 /* 名前 */
 .site-name {
-  font-size: 17px;
-  font-family: 'HigureGothic', 'Poppins', sans-serif;
+  font-size:20px;
+      font-family: 'FGPHikarinokanaAREJIS1', 'Poppins', sans-serif;
   font-weight: bold;
   color: #000;
-  margin: 0 0 20px 0; /* 上下のマージンだけ残す */
   text-align: center; /* 万が一の中央揃え */
-  width: 100%;        /* 幅を親いっぱいにして中央揃えを確実に */
+  width: auto;        /* 幅を親いっぱいにして中央揃えを確実に */
 }
 @font-face {
   font-family: 'HigureGothic';
@@ -105,15 +123,13 @@ html, body {
 
 /* ナビゲーション */
 
-/* ナビは左揃え */
 .main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
   list-style: none;
-  padding-left: 20px; /* 左の余白を20pxに増やす */
   margin: 0;
-  width: 100%;
-
-     border-radius: 10px; /* 10pxだけ角を丸める */
-
+  padding: 0;
 }
 
 
@@ -123,17 +139,11 @@ html, body {
 }
 
 .main-nav a {
-      font-family: 'Poppins', sans-serif; /* フォント指定 */
+      font-family: 'FGPHikarinokanaAREJIS1', 'Poppins', sans-serif;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 20px;
   color: #000;
   transition: color 0.3s;
-  text-shadow: none;
-    padding-top: 0px;
-    padding-bottom: 3px;
-    margin-right:10px;
-    margin-left: 10px;
-
 }
 
 .main-nav a:hover {
@@ -142,16 +152,6 @@ html, body {
 
 
 
-/* WORKページ用：中央のWORK種類と右の作品を横並び */
-/* WORK種類と作品を左ナビ横に横並びにする */
-.work-container {
-  display: flex;              /* 横並び */
-  align-items: flex-start;    /* 上揃え */
-  flex: 1;                    /* 残りスペースを全部使う */
-  padding-left: 10px;         /* 左ナビとの余白 */
-  box-sizing: border-box;
-  
-}
 
 
 
@@ -170,8 +170,8 @@ html, body {
 
 .work-category {
   margin-top: 30px; /* 見出しが重ならないように */
-  font-size: 1.5rem;
-    font-family: 'FGPHikarinokanaAREJIS1', 'Poppins', sans-serif;
+  font-size: 25px;
+    font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
 
 }
 
@@ -180,54 +180,49 @@ html, body {
 .work-list {
   display: flex;
   flex-direction: column;
-  align-items: center;        
-  width: 100%;
-  max-width: 700px;   /* カードの最大幅を広く */
-  padding: 20px 10px;
+  align-items: center;
 }
 
 /* 個別カード */
 .work-item {
-  background: #fff;
-  padding: 10px 20px;  /* 上下余白小さく */
-  margin-bottom: 20px;
-  border-radius: 5px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-  width: 100%;         /* max-width に従って広がる */
+  width: 80%;
+  margin: 0 auto 20px;
+  text-align: left;
+  font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
 }
 
 
 
-/* ホバー効果 */
-.work-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
+
 
 /* タイトル */
 .work-item h2 {
-  font-size: 13px;             /* 文字小さく */
+  font-size: 25px;             /* 文字小さく */
   font-weight: 400;
   margin-bottom: 8px;
-    font-family: 'M PLUS 1p', sans-serif;
+  font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
 }
 
 /* 詳細 */
 .work-item .details {
-  font-size: 11px;             /* 文字小さく */
+  font-size: 14px;             /* 文字小さく */
   color: #737373;
   margin-bottom: 10px;
-    font-family: 'M PLUS 1p', sans-serif;
+font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
 }
 
-/* リンク */
-.work-item a {
-  font-size: 11px;             /* 文字小さく */
-  color: #001b92;
-  text-decoration: none;
-  float: right;
+.title-link {
+  color: #000;
+  font-size: 25px;
+  text-decoration: underline;
+  float: none;
+  transition: opacity 0.3s;
 }
+
+.title-link:hover {
+  opacity: 0.6;
+}
+
 
 /* WORK種類リストの文字サイズを小さく */
 #work-types ul li {
@@ -359,505 +354,41 @@ html, body {
 
 
 /* スマホ用 */
-/* スマホ用 */
-/* スマホ用 */
-@media (max-width: 768px) {
-
-  .social-center .social-icon {
-    display:none;
-  }
-/* 画像 */
-  .left-photo-about {
-    position: absolute;
-    top: -10px;
-    left: 0;         /* 5px → 0 に変更 */
-    width: 100%;      /* 画面幅いっぱい */
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .left-photo-about img {
-    width: 100%;
-    max-width: 100%;  /* 念のため */
-    height: auto;
-    object-fit: cover;
-    display: block;
-    margin-bottom: 10px;
-  }
-.profile-text {
-  font-size: 12px;
-  line-height: 1.6;
-  color: #333;
-  max-width: 90%;      /* 横幅制限 */
-  margin: 0 auto 20px; /* 中央揃え＋下余白 */
-  text-align: left !important; /* 左寄せに戻す */
-    text-shadow: none;
-  color: #000;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;  /* 高さを100%に */
-}
-
-
-  .profile-name {
-  font-size: 16px;       /* 名前の文字サイズ */
-  font-weight: bold;
-  margin: 10px 0;        /* 上下余白 */
-  font-family: 'Poppins', sans-serif;
-  text-align: left;
-  text-shadow: none;
-  color: #000;
-}
-
-
-
-  /* 共通デフォルト（黒） */
-.hamburger,
-.site-name {
-  color: #000;
-}
-
-/* トップページだけ白 */
-/* トップページだけ白＋シャドウ追加 */
-body.home .hamburger,
-body.home .site-name,
-body.about-page .hamburger,
-body.about-page .site-name
- {
-    color: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    border-radius: 4px;
-}
-
-
- 
-  .right-text {
-    width: 100%;
-    max-width: none;
-    align-items: flex-start;     /* 左寄せ */
-    padding: 0 10px;
-    margin-top: 10px;            /* 写真との間隔調整 */
-  }
-
-
-  /* 名前（中央上部に固定） */
-  .site-name {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    font-size: 18px;
-    text-align: center;
-    z-index: 1000;
-    color: #000000;
-  }
-
-
-  /* ハンバーガーメニュー（右上固定） */
-  .hamburger {
-    position: absolute;
-    top: 5px;
-    right: 70px;
-    display: block;
-    font-size: 28px;
-    z-index: 1001;
-    color: #000000;
-  }
-
-  body.subpage .hamburger {
-  color: black;
-  text-shadow: none; /* 影なし */
-}
-  /* メインナビ非表示／表示切替 */
-  .main-nav {
-    display: none;
-    width: 100%;
-    text-align: center;
-    margin-top: 50px;
-  }
-
-  .main-nav.active {
-    display: block;
-  }
-
-  /* WORKページのレイアウト調整 */
-  .work-container .right-content .work-list {
-    width: 100%;
-    max-width: 100%;
-    flex-direction: column;
-    align-items: flex-start; /* 左寄せに変更 */
-    margin: 0 auto;
-    padding: 20px 10px;
-  }
-
-  .work-container .right-content .work-list .work-item {
-    width: 90%;
-    max-width: 400px;
-    text-align: left;       /* 左寄せに変更 */
-    float: none;
-    margin: 0 0 20px 0;
-  }
-
-  .work-item h2,
-  .work-item .details,
-  .work-item a {
-    text-align: left;       /* 左寄せに変更 */
-    float: none;            /* float解除 */
-  }
-
-  .right-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  align-items: center;         /* ← 中央揃え */
-    width: 100%;
-    margin-top: 0;
-    padding-left: 0;
-  }
-
-  
-  .work-category {
-    text-align: left;        /* 左寄せ */
-    width: 100%;
-    margin: 20px 0 10px 0;
-    font-size: 1.5rem;
-  }
-
-  /* WORK種類リストを上部に固定 */
-  #work-types {
-    position: absolute;
-    top: 60px; /* タイトルの下に配置 */
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-  }
-
-#mobile-nav li.social-center {
-  display: flex;
-  justify-content: center; /* 中央寄せ */
-}
-
-
-
-  /* ナビ背景 */
-  #mobile-nav {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 8px;
-    position: absolute;
-    top: 45px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    box-sizing: border-box;
-    z-index: 1001;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    text-align: center;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center; /* 中央揃え */
-    width: 13vh;
-    margin-top: 10px;
-  }
-  /* ul 縦並び・中央揃え */
-  #mobile-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 中央揃え */
-  }
-
-  /* li は上下マージンだけ */
-#mobile-nav li.social-center {
-  display: flex !important;       /* 必須 */
-  flex-direction: row !important; /* 横並び */
-  justify-content: flex-start;    /* 左寄せ */
-  align-items: center;
-  gap: 5px;                       /* アイコン間の隙間 */
-}
-
-
-  /* リンク文字 */
-  #mobile-nav a {
-    display: block;
-    margin: 5px 0;
-  }
-
-.social-center {
-  display: flex;
-  justify-content: center !important;
-  align-items: center !important;
-  transform: translateY(-12px); /* 上に5px移動 */
-}
-
-
-  
-
-
-}
-
-
 
 @media (max-width: 768px) {
-  .split-layout {
-    flex-direction: column;
-    align-items: flex-start; /* 左寄せに */
-  }
-  /* 名前（中央上部に固定） */
-  .site-name {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    font-size: 18px;
-    text-align: center;
-    z-index: 1000;
-    
-  }
-
-  /* ハンバーガーメニュー（右上固定） */
-  .hamburger {
-    position: absolute;
-    top: 5px;
-    right: 70px;
-    display: block;
-    font-size: 28px;
-    z-index: 1001;
-  }
-
-  /* メインナビ非表示／表示切替 */
-  .main-nav {
-    display: none;
+    body {
+    overflow-x: hidden;
     width: 100%;
-    text-align: center;
-    margin-top: 50px;
   }
 
-  .main-nav.active {
-    display: block;
-  }
-
-  /* WORKページ：縦並び */
-
-
-
-  .work-container .right-content .work-list {
-    width: 100%;
-    max-width: 100%;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-  }
-
-  .work-container .right-content .work-list .work-item {
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    float: none;
-    margin: 0 0 20px 0;
-  }
-
-  .work-container .right-content .work-list .work-item h2,
-  .work-container .right-content .work-list .work-item .details,
-  .work-container .right-content .work-list .work-item a {
-    text-align: center;
-    float: none;
-  }
-
-
-    .work-item .details,
-  .work-item a {
-    text-align: left;   /* 左寄せ */
-    float: none;        /* float解除 */
-  }
-  .work-list {
-    width: 100%;       /* 横幅いっぱいに */
-    max-width: 100%;   /* max-widthを解除して中央寄せに */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 10px;
-    box-sizing: border-box;
-  }
-
-  .work-category {
-    text-align: center;
-    width: 100%;
-    margin: 40px 0 10px 0;
-    font-size: 1.0rem;
-      font-family: 'M PLUS 1p', sans-serif;
-  }
-  
   .work-item {
-    text-align: left;       /* 中央揃えを解除して左揃え */
-    padding-left: 10px;     /* 左余白 */
-    padding-right: 10px;    /* 右余白 */
-    width: 100%;            /* 横幅いっぱい */
-    max-width: 700px;       /* PC版に合わせた最大幅 */
-    margin: 0 0 20px 0;     /* 下の余白 */
+    width: 90%;
   }
 
-  /* タイトルと詳細も左揃え */
+.right-text{
+  gap: 50px;
+  max-width: 90%;
+  padding-top: 10px;
+}
   .work-item h2,
-  .work-item .details,
-  .work-item a {
-    text-align: left;
-    margin: 0 0 5px 0;      /* 下の余白調整 */
-    float: none;            /* float解除 */
+  .title-link {
+    font-size: 14px ;
+  }
+  .site-name {
+    font-size: 12px;
+  }
+  .main-nav a {
+    font-size: 12px;
   }
 
-
-
-  /* WORK種類リストを上部に固定 */
-  #work-types {
-  position: absolute;
-  top: 60px; /* タイトルの下に配置 */
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-
-  /* ハンバーガー周りのラッパー */
-  .hamburger-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .main-nav ul {
+    gap: 15px;
   }
 
-  #mobile-work-link {
-    display: inline-block;
-    font-weight: bold;
-  }
-
-
-
-/* li自体を中央寄せ */
-#mobile-nav li.social-center {
-  display: flex;           /* ←追加 */
-  justify-content: left; /* 横方向中央 */
-  width: 100%;
-  margin-top: 10px;        /* 上余白 */
-}
-
-/* アイコン */
-#mobile-nav li.social-center img.social-icon {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  display: inline-block;
-  margin-left: -2px; /* 左に2pxずらす */
-  padding-top: 15px;
-}
-
-
-
-#scrollToTop {
-  position: fixed;
-  bottom: 30px;       /* 下からの距離 */
-  right: 30px;        /* 右からの距離 */
-  display: none;      /* 初期は非表示 */
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  z-index: 1000;
-  transition: opacity 0.3s;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* ←文字に影 */
-}
-
-body.home .site-name,
-body.about-page
- {
-    color: #fff;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-      box-shadow: none; /* もし影も消したければ */
-}
-
-#scrollToTop:hover {
-  background-color: #555;
-}
-
-/* トップページのハンバーガー文字＆シャドウ消す */
-body.home .hamburger,
-body.home .site-name,
-body.about-page .hamburger,
-body.about-page .site-name {
-    border-radius: 0;  /* 角丸も消したければ */
-        top: 8px;       /* 黒ハンバーガーと同じ */
-    right: 70px;    /* 黒ハンバーガーと同じ */
-    box-shadow: none;
-}
-
-.hamburger{
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-  box-shadow: none !important;              /* ボックスシャドウを完全に消す */
-}
-
-
-
-.main-nav a.active {
-  font-weight: 700; /* 太字にする */
-}
-  .split-layout {
-    position: relative; /* 写真の絶対位置指定の基準にする */
-  }
-
-  .left-photo {
-    position: absolute;  /* 重ねるために絶対位置指定 */
-    top: 0;              /* ページ最上部に配置 */
-    left: 0;
-    width: 100%;
-    z-index: -1;         /* テキストより後ろに置く（必要に応じて調整） */
-  }
-
-  .left-photo img {
-    width: 100%;
+  .social-icon {
+    width: 10px;
     height: auto;
-    display: block;
   }
-
-  .right-text {
-    position: relative;
-    z-index: 2; /* 写真の上に出す */
-  }
-.left-photo-mvai {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60vh;          /* 高さを画面の60%くらいに（好みで調整） */
-  overflow: hidden;      /* はみ出した部分をカット */
-  z-index: -1;
-    height: 100vh;      /* 高さを画面いっぱいに */
-}
-
-.left-photo-mvai img {
-  width: 100%;           /* 画面より大きく表示（例：120%） */
-  height: auto;
-  display: block;
-  object-fit: cover;     /* 枠いっぱいに収めつつカット */
-  object-position: center top; /* 上を基準に切り取り */
-}
-
-
-.work-types{
-  display: none;
-}
-
-
-
-
 
 }
 
