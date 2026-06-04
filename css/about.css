@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Timmana&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+JP&display=swap');
+
+@font-face {
+  font-family: 'FGPHikarinokanaAREJIS1';
+  src: url('../fonts/FGPHikarinokanaAREJIS1.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.sans {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+}
+
+.serif {
+  font-family: "Roboto", "Noto Serif JP", serif;
+}
+.zen-kaku {
+  font-family: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+}
+
+.timmana {
+  font-family: 'Timmana', sans-serif;
+}
+
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.home-title {
+  position: fixed;
+  top: 50%!important;
+  left: 50%!important;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-align: center;
+  width: auto;
+}
+
+.home-title .site-name-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: opacity 0.3s;
+}
+
+.home-title .site-name-link:hover {
+  opacity: 0.6;
+}
+.split-layout {
+  margin: 0 auto;
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-top: 30px;
+}
+
+.work-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* 左側の写真は可変 */
+.left-photo {
+  flex: 1;
+  display: flex;
+  align-items: flex-start !important; /* 上揃え */
+  justify-content: flex-end; /* 右寄せ */
+  padding: 0;               /* 念のため */
+  margin: 0;                /* 念のため */
+}
+
+.left-photo img {
+  display: block;
+  margin-top: 0 !important;                /* 完全に余白を消す */
+  object-fit: contain !important;
+  vertical-align: top;      /* 画像を上に揃える */
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.left-photo-top img {
+  display: block;
+  margin-top: 0 !important;                /* 完全に余白を消す */
+  object-fit: contain !important;
+  vertical-align: top;      /* 画像を上に揃える */
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+
+
+
+
+
+/* 名前 */
+.site-name {
+  font-size:20px;
+      font-family: 'FGPHikarinokanaAREJIS1', 'Poppins', sans-serif;
+  font-weight: bold;
+  color: #000;
+  text-align: center; /* 万が一の中央揃え */
+  width: auto;        /* 幅を親いっぱいにして中央揃えを確実に */
+}
+@font-face {
+  font-family: 'HigureGothic';
+  src: url('HigureGothic.ttf') format('truetype');
+}
+
+
+
+/* ナビゲーション */
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.main-nav li {
+  margin-bottom: 5px;
+
+}
+
+.main-nav a {
+      font-family: 'FGPHikarinokanaAREJIS1', 'Poppins', sans-serif;
+  text-decoration: none;
+  font-size: 20px;
+  color: #000;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: #555;
+}
+.profile-section{
+  display: flex;
+  flex-direction: row;   /* ← 横並びの本体 */
+  align-items: flex-start;
+  gap: 60px;             /* 写真・テキスト・名前ブロックの間 */
+   margin-top: 30px;
+}
+
+/* 写真 */
+.profile-photo img{
+  width: 300px;
+  display: block;
+}
+
+/* テキスト縦書き */
+.profile-text{
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 18px;
+  line-height: 2;
+  margin: 0;
+  font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
+}
+
+/* 名前＋かなを1ブロックにして“距離コントロール”する */
+.profile-name-wrap{
+  display: flex;
+  flex-direction: row;   /* ← 横並び */
+  gap: 6px;              /* ← ★ここが「ギャップ調整ポイント」 */
+}
+
+/* 名前（縦書き） */
+.profile-name{
+  writing-mode: vertical-rl;
+  font-size: 28px;
+  margin: 0;
+  line-height: 1;
+  font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
+
+}
+
+/* かな（縦書き） */
+.profile-kana{
+  writing-mode: vertical-rl;
+  font-size: 18px;
+  margin: 0;
+  line-height: 1;
+    letter-spacing: 0.3rem;
+  font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
+}
+@media (max-width: 768px){
+
+  .profile-section{
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .profile-info{
+    text-align: center;
+  }
+
+}

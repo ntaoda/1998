@@ -39,7 +39,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/about.css?v=1">
 
   <!-- フォント -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,7 +92,6 @@
     <nav class="main-nav">
     
       <ul>
-        <li><a href="index.html">top</a></li>
         <li><a href="work.html">work</a></li>
         <li><a href="about.html">about</a></li>
         <li>
@@ -107,137 +106,25 @@
       </ul>
     </nav>
 
-
-        </ul>
-      </nav>
     </div>
 
-    <!-- Instagramアイコン -->
+<div class="profile-section">
 
-
-    <div class="hamburger" id="hamburger">
-  ☰
-
-<nav class="main-nav" id="mobile-nav">
-  <ul>
-    <li><a href="index.html">top</a></li>
-    <li><a href="work.html">work</a></li> <!-- ← 直接 work.html に飛ばす -->
-    <li><a href="about.html">about</a></li>
-    <li><a href="mailto:ntaoda@gmail.com">contact</a></li>
-    <li class="social-center">
-      <a href="https://x.com/__t_o_d__?s=11" target="_blank">
-        <img src="img/X-icon.svg" alt="X" class="social-icon">
-      </a>
-    </li>
-  </ul>
-</nav>
-
-
-
-</div>
-    <!-- 右側：写真 -->
-<div class="left-photo-about">
-  <div class="fog-container">
-    <img src="img/about.jpg" alt="TOD メイン写真" class="about-img">
-    <canvas id="fog-canvas"></canvas>
+  <div class="profile-photo">
+    <img src="img/about.jpg" alt="プロフィール写真">
   </div>
-  
-  <h1 class="profile-name">太尾田尚希　TAODA NAOKI</h1>
+
   <p class="profile-text">
-    1998年10月5日月曜日生まれ。広島県出身。<br>
+    一九九八年十月五日月曜日生。広島県出身。<br>
     中学では卓球部、高校では弓道部、大学では演劇部に所属。
   </p>
+
+  <div class="profile-name-wrap">
+    <h1 class="profile-name">太尾田尚希</h1>
+    <div class="profile-kana">たおだなおき</div>
+  </div>
+
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  // --- スクロール検知 ---
-  const scrollBtn = document.getElementById('scrollToTop');
-  window.addEventListener('scroll', () => {
-    if(scrollBtn) scrollBtn.style.display = (window.scrollY > 200) ? 'block' : 'none';
-  });
-  if(scrollBtn){
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // --- ハンバーガー ---
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobile-nav');
-  if(hamburger && mobileNav){
-    mobileNav.style.display = 'none';
-    hamburger.addEventListener('click', () => {
-      mobileNav.style.display = (mobileNav.style.display==='none'||mobileNav.style.display==='') ? 'flex' : 'none';
-    });
-  }
-
-  // --- 現在ページのリンクハイライト ---
-  const currentPage = location.pathname.split("/").pop();
-  document.querySelectorAll('.main-nav a').forEach(link => {
-    if(link.getAttribute('href') === currentPage){
-      link.classList.add('active');
-    }
-  });
-
-  // --- 曇りガラス ---
-  const canvas = document.getElementById("fog-canvas");
-  const img = document.querySelector(".about-img");
-  if(canvas && img){
-    const ctx = canvas.getContext("2d");
-    let drawing = false;
-
-    function setupFog(){
-      const rect = img.getBoundingClientRect();
-      const ratio = window.devicePixelRatio || 1;
-
-      canvas.width = rect.width * ratio;
-      canvas.height = rect.height * ratio;
-      canvas.style.width = rect.width + "px";
-      canvas.style.height = rect.height + "px";
-
-      ctx.setTransform(1,0,0,1,0,0);
-      ctx.scale(ratio, ratio);
-
-      ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "rgba(255,255,255,0.7)";
-      ctx.fillRect(0,0,rect.width,rect.height);
-    }
-
-    setupFog();
-    window.addEventListener("resize", setupFog);
-
-    function erase(x,y){
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.beginPath();
-      ctx.arc(x,y,40,0,Math.PI*2);
-      ctx.fill();
-    }
-
-    function getPos(e){
-      const rect = canvas.getBoundingClientRect();
-      if(e.touches) return { x: e.touches[0].clientX-rect.left, y: e.touches[0].clientY-rect.top };
-      return { x: e.clientX-rect.left, y: e.clientY-rect.top };
-    }
-
-    // --- PC ---
-    canvas.addEventListener("mousedown", e => { drawing=true; erase(getPos(e).x,getPos(e).y); });
-    canvas.addEventListener("mousemove", e => { if(drawing) erase(getPos(e).x,getPos(e).y); });
-    canvas.addEventListener("mouseup", ()=>drawing=false);
-    canvas.addEventListener("mouseleave", ()=>drawing=false);
-
-    // --- スマホ ---
-    canvas.addEventListener("touchstart", e => { e.preventDefault(); drawing=true; erase(getPos(e).x,getPos(e).y); }, {passive:false});
-    canvas.addEventListener("touchmove", e => { e.preventDefault(); if(drawing) erase(getPos(e).x,getPos(e).y); }, {passive:false});
-    canvas.addEventListener("touchend", ()=>drawing=false);
-    canvas.addEventListener("touchcancel", ()=>drawing=false);
-  }
-
-});
-
-</script>
-</script>
-
 </body>
 
 

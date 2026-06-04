@@ -26,428 +26,414 @@
   font-family: 'Timmana', sans-serif;
 }
 
+.stage-item .name,
+.stage-item .detail,
+.stage-item a ,.profile-name,
+.profile-keireki{
+  font-family: "Hiragino UD Sans", "ヒラギノUD角ゴ W3", sans-serif;
+}
 
 
-
+/* ========== BASE ========== */
 html, body {
   margin: 0;
-  padding: 0;
+  background: #000;
+  color: #fff;
 }
 
-
-
-.home-title {
+html {
+  scroll-behavior: smooth;
+}
+/* ========== HEADER ========== */
+.header {
   position: fixed;
-  top: 50%!important;
-  left: 50%!important;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  text-align: center;
-  width: auto;
-}
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
 
-.home-title .site-name-link {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-  transition: opacity 0.3s;
-}
+  z-index: 1000;
 
-.home-title .site-name-link:hover {
-  opacity: 0.6;
-}
-.split-layout {
-  margin: 0 auto;
-      display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.right-text {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  padding-top: 30px;
+
+  font-family: "Hiragino UD Sans", "Noto Sans JP", sans-serif;
 }
 
-.work-list {
+.nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 5px;
 }
-/* 左側の写真は可変 */
-.left-photo {
-  flex: 1;
-  display: flex;
-  align-items: flex-start !important; /* 上揃え */
-  justify-content: flex-end; /* 右寄せ */
-  padding: 0;               /* 念のため */
-  margin: 0;                /* 念のため */
-}
-
-.left-photo img {
-  display: block;
-  margin-top: 0 !important;                /* 完全に余白を消す */
-  object-fit: contain !important;
-  vertical-align: top;      /* 画像を上に揃える */
-  width: 100%;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.left-photo-top img {
-  display: block;
-  margin-top: 0 !important;                /* 完全に余白を消す */
-  object-fit: contain !important;
-  vertical-align: top;      /* 画像を上に揃える */
-  width: 100%;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-
-
-
-
-
-/* 名前 */
-.site-name {
-  font-size:20px;
-      font-family: 'FGPHikarinokanaAREJIS1', 'Poppins', sans-serif;
-  font-weight: bold;
-  color: #000;
-  text-align: center; /* 万が一の中央揃え */
-  width: auto;        /* 幅を親いっぱいにして中央揃えを確実に */
-}
-@font-face {
-  font-family: 'HigureGothic';
-  src: url('HigureGothic.ttf') format('truetype');
-}
-
-
-
-/* ナビゲーション */
-
-.main-nav ul {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-.main-nav li {
-  margin-bottom: 5px;
-
-}
-
-.main-nav a {
-      font-family: 'FGPHikarinokanaAREJIS1', 'Poppins', sans-serif;
+.nav a {
+  display: inline-block;
+  padding: 6px 14px;
+background-color: #000;
+  color: #fff;
   text-decoration: none;
-  font-size: 20px;
+
+  border: 1px solid #666;
+  border-radius: 999px;
+
+  font-size: 14px;
+
+  transition: 0.2s ease;
+}
+.nav a:hover {
+  background: #fff;
   color: #000;
-  transition: color 0.3s;
+  border-color: #fff;
 }
-
-.main-nav a:hover {
-  color: #555;
-}
-
-
-
-
-
-
-/* WORK種類 */
-/* 右側コンテンツのラッパー */
-.right-content {
-  flex: 1;                       
+/* ========== LAYOUT ========== */
+.layout {
   display: flex;
-  justify-content: center;   /* 横方向中央 */
-  align-items: flex-start;   /* 上揃え */
-  padding-left: 0;           /* 左ナビとの隙間は0に */
-  padding-top: 20px; /* 上のカードが隠れないように余白 */
-  box-sizing: border-box;
+  padding-top: 60px;
 }
 
+/* ========== LEFT ========== */
+.left {
+  width: 40vw;
+  height: calc(100vh - 60px);
+  position: fixed;
+  top: 60px;
+  left: 0;
+  background: #000;
 
-.work-category {
-  margin-top: 30px; /* 見出しが重ならないように */
-  font-size: 25px;
-    font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
-
-}
-
-/* 作品リスト（カードを中央揃え） */
-/* 作品リスト */
-.work-list {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-/* 個別カード */
-.work-item {
-  width: 60%;
-  margin: 0 auto 20px;
-  text-align: left;
-  font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
-}
-
-
-
-
-
-/* タイトル */
-.work-item h2 {
-  font-size: 25px;             /* 文字小さく */
-  font-weight: 400;
-  margin-bottom: 8px;
-  font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
-}
-
-/* 詳細 */
-.work-item .details {
-  font-size: 14px;             /* 文字小さく */
-  color: #737373;
-  margin-bottom: 10px;
-font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
-}
-
-.title-link {
-  color: #000;
-  font-size: 25px;
-  text-decoration: underline;
-  float: none;
-  transition: opacity 0.3s;
-}
-
-.title-link:hover {
-  opacity: 0.6;
-}
-
-
-/* WORK種類リストの文字サイズを小さく */
-#work-types ul li {
-  font-size: 13px;   /* お好みで調整 */
-  margin-bottom: 5px;
-  cursor: pointer;
-  list-style: none;  /* 点も消す */
-}
-
-
-
-/* 脚本・演出作品の画像 */
-.work-item[data-type="story"] .work-img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-/* 舞台美術の画像 */
-.work-item[data-type="script"] .work-img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-/* 脚本・演出作品の画像 */
-.work-item[data-type="story"] .work-img,
-.work-item[data-type="script"] .work-img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-/* PCではハンバーガー非表示 */
-.hamburger {
-  display: none;
-}
-
-
-/* 写真ラッパー */
-.left-photo-about {
+.profile-center {
   display: flex;
-  flex-direction: column;    /* 縦並び */
-  align-items: center;       /* 横方向中央 */
-  margin-top:7%;
-
-  padding: 0;
-  flex: 1;                   /* 残り幅を全部使う */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
 }
 
-/* 写真 */
-.left-photo-about img {
-  width:280px;      /* 好きな幅 */
-   /* 位置調整用 */
+.profile-image img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
 }
-
-
-.left-photo-about .profile-name,
- .profile-text {
-  text-align: center;   /* 文字も中央揃え */
-  
-}
-
-
-
-
-
 
 .profile-name {
-  font-size: 16px;       /* 名前の文字サイズ */
-  font-weight: bold;
-  margin-top: 15px;        /* 上下余白 */
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  margin-bottom: 0%;
-  padding-bottom: 0%;
-}
-
-.profile-text {
-  font-size: 10px;       /* プロフィール本文の文字サイズ */
-  line-height: 1.6;
-  color: #333;
-  max-width: 500px;      /* 横幅制限 */
-  text-align: left;
-    font-family: 'M PLUS 1p', sans-serif;
-    margin-top: 10px;
-    padding: 0;
-    
-}
-
-
-/* PC用 */
-@media screen and (min-width: 768px) {
-.social-center {
-  list-style: none;       /* 黒丸を消す */
-  position: relative;     /* fixed を relative に変更 */
-  bottom: auto;           /* fixed用の指定をリセット */
-  left: auto;             /* 中央寄せの指定をリセット */
-  transform: none;        /* transformをリセット */
-  width: auto;            /* 横幅を自動調整 */
-  margin: 10px 0 0 0;     /* 上に少し余白 */
-  display: flex;
-  justify-content: flex-start !important; /* 左寄せ */
-  gap: 10px;               /* アイコン間の隙間 */
-  z-index: 1;              /* 必要に応じて調整 */
-}
-
-  .social-center .social-icon {
-    width: 22px;
-    height: auto;
-    filter: grayscale(100%) brightness(0.9);
-    transition: transform 0.3s, filter 0.3s;
-  }
-
-  .social-center .social-icon:hover {
-    transform: scale(1.1);
-    filter: grayscale(0%) brightness(1);
-  }
-.left-photo-mvai{
-  display:none;
-
-}
-
-}
-
-
-
-/* スマホ用 */
-
-@media (max-width: 768px) {
-
-
-body.home .home-title {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-  .left-photo-mvai {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
-  }
-
-  .left-photo-mvai img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  body.home .home-title a {
-    font-size: 14px ;
-   
-font-family: 'FGPHikarinokanaAREJIS1', 'M PLUS 1p', sans-serif;
-    color: #ffffff;
-    white-space: nowrap;
-  }
-
-  
-
-    body {
-    overflow-x: hidden;
-    width: 100%;
-  }
-
-  .work-item {
-    width: 90%;
-  }
-
-.right-text{
-  gap: 40px;
-  max-width: 90%;
-  padding-top: 10px;
-}
-  .work-item h2,
-  .title-link {
-    font-size: 14px ;
-  }
-  .site-name {
-    font-size: 12px;
-  }
-  .main-nav a {
-    font-size: 12px;
-  }
-
-  .main-nav ul {
-    gap: 15px;
-  }
-
-  .social-icon {
-    width: 10px;
-    height: auto;
-  }
-
-}
-
-
-.fog-container{
-  position: relative;
-  display: inline-block;
-}
-
-.about-img{
+  font-size: 16px;
+  letter-spacing: 0.05em;
   width: 100%;
-  display: block;
+  font-weight: 600;
+}
+.profile-keireki{
+  font-size: 12px;
+  opacity: 0.8;
+  text-align: left;
+  width: 60%;
 }
 
-#fog-canvas{
+.profile-x img {
+  width: 100%;
+  height: 16px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.profile-x a {
+  position: relative;
+  overflow: hidden;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #666;
+  border-radius: 50%;
+
+  transition: 0.3s;
+}
+
+.profile-x a::before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  touch-action: none;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  background: #fff;
+
+  transform: scale(0);
+  transition: transform 0.35s ease;
+
+  z-index: 0;
+}
+.profile-x a:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
+.profile-x a:hover img {
+  filter: brightness(0);
+}
+/* ========== RIGHT ========== */
+.right {
+  margin-left: 40vw;
+  width: 60vw;
+  height: calc(100vh - 60px);
+}
+
+/* ========== WORK BASE ========== */
+.work {
+  height: auto;
+  min-height: unset;
+
+  margin: 10px;
+  border-radius: 50px;
+  overflow: visible;
+
+}
+/* COLORS */
+.bg2 { background: #e6ff6f; color: #000; }
+.bg1 { background: #ffffff; color: #000; }
+.bg3 { background: #4da165; }
+.bg4 { background: #ffaeae; color: #000; }
+.bg5 { background: #e1ded3; color: #000; }
+.bg6 { background: #f05741; color: #000; }
+
+/* ========== ABOUT ========== */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-title {
+  font-size: 28px;
+  letter-spacing: 0.2em;
+}
+
+.about-name {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-bio {
+  font-size: 12px;
+  line-height: 1.8;
+  opacity: 0.8;
+  max-width: 320px;
+}
+
+/* ========== STAGE ========== */
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.stage-box {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  width: 90%;
+}
+
+.stage-title-en {
+  font-size: 3.5vw;
+    font-family: "Climate Crisis", sans-serif;
+    margin-top: 50px;
+      text-align: center;
+}
+
+.stage-title-jp {
+  font-size: 10px;
+  opacity: 0.8;
+    text-align: center;
+     font-family: "Hiragino UD Sans", "ヒラギノUD角ゴ W3", sans-serif;
+font-weight: 600;
+}
+
+.stage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.stage-item {
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+ width: 100%;
+  border-bottom: 1px dashed #000; /* 基本は下線だけ */
+    box-sizing: border-box;
+}
+
+.name{
+  font-size: 20px;
+  font-weight: 600;
+}
+.detail{
+  font-size: 13px;
+}
+
+.stage-link {
+  display: inline-flex;
+  width: fit-content;
+  align-self: flex-start;
+font-weight: 600;
+  padding: 5px 10px;
+  background: #f5f5f5;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 999px;
+font-size: 10px;
+  color: #000;
+  text-decoration: none;
+}
+
+.stage-link:hover {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+.stage-item:first-child {
+  border-top: 1px dashed #000;
+}
+
+.stage-item:last-child {
+  border-bottom: none;
+}
+
+.stage-item .name,
+.stage-item .detail,
+.stage-item a {
+  text-align: left;
+}
+
+
+.art .stage-item {
+
+  padding: 16px 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* 一番上だけ上線あり（そのままOK） */
+/* 一番下は下線なし */
+.art .stage-item:last-child {
+  border-bottom: none;
+}
+
+/* 画像 */
+.art-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* 名前 */
+.footer-name {
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* アイコン横並び */
+.footer-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-icons img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+}
+
+.footer-icons img:hover {
+  opacity: 1;
+}
+.footer-icons a {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #000000;
+  border-radius: 50%;
+
+  transition: 0.3s;
+}
+
+/* 年 */
+.footer-year {
+  font-size: 10px;
+  opacity: 0.7;
+  letter-spacing: 0.2em;
+}
+
+@media screen and (max-width: 768px) {
+
+  html, body {
+    height: auto;
+  }
+
+  .layout {
+    display: block; /* ← flexやめるのが一番安全 */
+  }
+
+  .left {
+    position: relative;
+    width: 100%;
+    height: auto !important;
+  }
+ 
+
+  .right {
+    width: 100%;
+    margin-left: 0;
+    height: auto !important;
+    overflow: visible;
+    padding-top: 100px;
+  }
+
 }
