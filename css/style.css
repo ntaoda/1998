@@ -29,7 +29,7 @@
 .stage-item .name,
 .stage-item .detail,
 .stage-item a ,.profile-name,
-.profile-keireki{
+.profile-keireki ,.footer-year,.footer-name {
   font-family: "Hiragino UD Sans", "ヒラギノUD角ゴ W3", sans-serif;
 }
 
@@ -96,12 +96,14 @@ background-color: #000;
   width: 40vw;
   height: calc(100vh - 60px);
   position: fixed;
-  top: 60px;
+  top: 50px;
   left: 0;
-  background: #000;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: #000;
 }
 
 .profile-center {
@@ -183,7 +185,7 @@ background-color: #000;
 .right {
   margin-left: 40vw;
   width: 60vw;
-  height: calc(100vh - 60px);
+   height: auto;
 }
 
 /* ========== WORK BASE ========== */
@@ -353,7 +355,8 @@ font-size: 10px;
 .footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;   
+      margin-bottom: 20px;
 }
 
 .footer-box {
@@ -365,6 +368,7 @@ font-size: 10px;
   text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;
+
 }
 
 /* 名前 */
@@ -457,4 +461,26 @@ font-size: 10px;
   .nav a{
     font-size: 10px;
   }
+.footer-icons img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+.footer-icons img:hover {
+  opacity: 1;
+}
+.footer-icons a {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #000000;
+  border-radius: 50%;
+
+  transition: 0.3s;
+}
+
 }
