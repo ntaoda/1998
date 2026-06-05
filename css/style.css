@@ -196,6 +196,7 @@ margin-right: 20px;
 margin-top: 20px;
   border-radius: 50px;
   overflow: visible;
+  z-index: 100;
 
 }
 /* COLORS */
@@ -272,7 +273,7 @@ font-weight: 600;
 .stage-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0px;
   width: 100%;
   margin-top: 30px;
   margin-bottom: 40px;
@@ -286,7 +287,10 @@ font-weight: 600;
  width: 100%;
   border-bottom: 1px dashed #000; /* 基本は下線だけ */
     box-sizing: border-box;
-   margin-bottom: 0;
+   margin-bottom: 20px;
+}
+.stage-item.no-mb {
+  margin-bottom: 0;
 }
 
 .name{
@@ -356,6 +360,7 @@ font-size: 10px;
   height: auto;
   display: block;
   margin: 0 auto 0px;
+  padding-bottom: 10px;
 }
 
 .footer {
