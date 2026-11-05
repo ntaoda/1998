@@ -28,7 +28,7 @@
 
 .stage-item .name,
 .stage-item .detail,
-.stage-item a ,.profile-name,
+.stage-item a ,.profile-name,.role,
 .profile-keireki ,.footer-year,.footer-name {
   font-family: "Hiragino UD Sans", "ヒラギノUD角ゴ W3", sans-serif;
 }
@@ -297,14 +297,15 @@ font-weight: 600;
   font-size: 20px;
   font-weight: 600;
   margin: 0;
+  padding-bottom: 5px;
 }
 .detail {
   font-size: 13px;
   margin: 0;
-
   display: flex;
   flex-direction: column;
   gap: 16px;
+
 }
 
 .schedule {
@@ -315,6 +316,9 @@ font-weight: 600;
 .date,
 .place {
   margin: 0;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  font-size: 13px;
 }
 
 
@@ -451,6 +455,17 @@ font-size: 10px;
   letter-spacing: 0.2em;
 }
 
+.enshutu-image {
+  padding-bottom: 15px  !important;
+}
+
+.role {
+  font-size: 13px;
+  margin: 0;
+  padding-bottom: 0px;
+}
+
+
 @media screen and (max-width: 768px) {
 
   .left{
@@ -535,3 +550,4 @@ font-size: 10px;
   }
 
 }
+
