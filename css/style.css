@@ -28,7 +28,7 @@
 
 .stage-item .name,
 .stage-item .detail,
-.stage-item a ,.profile-name,.role,
+.stage-item a ,.profile-name,.role,.date,
 .profile-keireki ,.footer-year,.footer-name {
   font-family: "Hiragino UD Sans", "ヒラギノUD角ゴ W3", sans-serif;
 }
